@@ -21,7 +21,12 @@ export default function Footer() {
                             alt="RKCT Logo"
                             className="h-16 md:h-20 w-auto object-contain transition-transform duration-300 hover:scale-105"
                           />
-                          <span className="text-brand-gold font-bold text-lg md:text-2xl hidden sm:block">RKCT</span>
+                          <div className="hidden sm:flex flex-col justify-center -ml-2">
+                            <span className="text-brand-gold font-bold text-xl md:text-2xl leading-tight font-heading">RKCT</span>
+                            <span className="text-white text-[9px] md:text-[10px] font-semibold tracking-wider uppercase">
+                              Ramvati Kasana Charitable Trust
+                            </span>
+                          </div>
                         </Link>
                       </div>
             <p className="text-sm leading-relaxed text-slate-400">
@@ -74,8 +79,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/gallery" className="text-sm hover:text-brand-gold transition-colors duration-300 flex items-center">
-                  <span className="mr-2 text-brand-gold">›</span> Gallery & Events
+                <Link to="/blog" className="text-sm hover:text-brand-gold transition-colors duration-300 flex items-center">
+                  <span className="mr-2 text-brand-gold">›</span> Blog & Updates
                 </Link>
               </li>
               <li>

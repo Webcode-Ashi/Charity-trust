@@ -9,7 +9,7 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import About from './pages/About'
 import Causes from './pages/Causes'
-import Gallery from './pages/Gallery'
+import Blog from './pages/Blog'
 import Contact from './pages/Contact'
 import DonatePage from './pages/DonatePage'
 
@@ -32,7 +32,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/causes" element={<Causes />} />
-          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/donate" element={<DonatePage />} />
         </Routes>

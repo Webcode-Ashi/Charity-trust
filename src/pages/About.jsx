@@ -3,7 +3,7 @@ import gsap from 'gsap'
 import { Target, Heart, Eye, Award } from 'lucide-react'
 
 // Import local images from assets
-import ramvatiImg from '../assets/images/ramvati.jpeg'
+import dadiPassportImg from '../assets/images/dadi_passport.png'
 import ownerImg from '../assets/images/owner.png'
 import owner1Img from '../assets/images/owner1.png'
 import owner2Img from '../assets/images/owner2.png'
@@ -61,11 +61,11 @@ export default function About() {
             <div className="flex justify-center">
               <div className="relative group max-w-md w-full">
                 <div className="absolute inset-0 bg-brand-gold rounded-3xl -rotate-3 scale-95 transition-all duration-300 group-hover:rotate-0"></div>
-                <div className="relative overflow-hidden rounded-3xl bg-slate-100 shadow-xl border-4 border-white aspect-[3/4]">
+                <div className="relative overflow-hidden rounded-3xl bg-white shadow-xl border-4 border-white aspect-[3/4]">
                   <img 
-                    src={ramvatiImg} 
-                    alt="Smt. Ramvati Kasana" 
-                    className="w-full h-full object-contain transition-transform duration-500 hover:scale-105"
+                    src={dadiPassportImg} 
+                    alt="Smt. Ramvati Kasana (Dadiji)" 
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   />
                 </div>
               </div>

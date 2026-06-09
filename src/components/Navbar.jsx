@@ -12,7 +12,7 @@ export default function Navbar() {
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
     { name: 'Causes', path: '/causes' },
-    { name: 'Gallery', path: '/gallery' },
+    { name: 'Blog', path: '/blog' },
     { name: 'Contact Us', path: '/contact' }
   ]
 
@@ -20,18 +20,23 @@ export default function Navbar() {
 
   return (
     <nav className="bg-[#245331] sticky top-0 z-50 shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-4 md:px-8">
         <div className="flex items-center justify-between h-20">
 
           {/* Logo Section */}
-          <div className="flex-shrink-0 pl-4 md:pl-8">
-            <Link to="/" className="flex items-center ">
+          <div className="flex-shrink-0">
+            <Link to="/" className="flex items-center">
               <img
                 src={logo}
                 alt="RKCT Logo"
                 className="h-16 md:h-20 w-auto object-contain transition-transform duration-300 hover:scale-105"
               />
-              <span className="text-brand-gold font-bold text-lg md:text-2xl hidden sm:block">RKCT</span>
+              <div className="hidden sm:flex flex-col justify-center -ml-2">
+                <span className="text-brand-gold font-bold text-xl md:text-2xl leading-tight font-heading">RKCT</span>
+                <span className="text-white text-[9px] md:text-[10px] font-semibold tracking-wider uppercase">
+                  Ramvati Kasana Charitable Trust
+                </span>
+              </div>
             </Link>
           </div>
 
@@ -42,8 +47,8 @@ export default function Navbar() {
                 key={link.name}
                 to={link.path}
                 className={`relative py-2 text-sm font-semibold tracking-wide transition-colors duration-300 ${isActive(link.path)
-                    ? 'text-white border-b-2 border-white'
-                    : 'text-white hover:text-white/80'
+                  ? 'text-white border-b-2 border-white'
+                  : 'text-white hover:text-white/80'
                   }`}
               >
                 {link.name}
@@ -130,8 +135,8 @@ export default function Navbar() {
                 to={link.path}
                 onClick={() => setIsOpen(false)}
                 className={`block px-3 py-3 rounded-md text-base font-semibold transition-colors ${isActive(link.path)
-                    ? 'bg-white/10 text-white'
-                    : 'text-white hover:bg-white/5'
+                  ? 'bg-white/10 text-white'
+                  : 'text-white hover:bg-white/5'
                   }`}
               >
                 {link.name}
