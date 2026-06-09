@@ -17,6 +17,7 @@ import work3 from '../assets/images/work3.png'
 import yogaImg from '../assets/images/yoga.png'
 import templeImg from '../assets/images/temple.png'
 import heroVideo from '../assets/video/Hero_section.mp4'
+import heroVideo1 from '../assets/video/Hero_section1.mp4'
 import aboutHeroVideo from '../assets/video/about_hero.mp4'
 import img1 from '../assets/images/img1.png'
 import img2 from '../assets/images/img2.png'
@@ -183,6 +184,7 @@ export default function Home() {
         '-=0.4'
       )
 
+    let intervalId;
     // Animate counter numbers
     const animateCounters = () => {
       const targets = {
@@ -206,13 +208,27 @@ export default function Home() {
             projects: Math.floor(targets.projects),
             transparency: Math.floor(targets.transparency)
           })
+        },
+        onComplete: () => {
+          // Continuous live increment so counting never stops
+          intervalId = setInterval(() => {
+            setDisplayStats(prev => ({
+              lives: prev.lives + Math.floor(Math.random() * 3) + 1,
+              volunteers: prev.volunteers + Math.floor(Math.random() * 2),
+              projects: prev.projects + Math.floor(Math.random() * 2) + 1,
+              transparency: prev.transparency + Math.floor(Math.random() * 4) + 1
+            }))
+          }, 2000) // update every 2 seconds
         }
       })
     }
 
     // Start counter animation after initial animations
     const timer = setTimeout(animateCounters, 1000)
-    return () => clearTimeout(timer)
+    return () => {
+      clearTimeout(timer)
+      if (intervalId) clearInterval(intervalId)
+    }
   }, [])
 
   const stats = [
@@ -344,10 +360,10 @@ export default function Home() {
           muted
           playsInline
           preload="auto"
-          onCanPlay={(e) => { e.target.playbackRate = 0.5 }}
+          onCanPlay={(e) => { e.target.playbackRate = 0.25 }}
           className="absolute inset-0 w-full h-full object-cover z-0"
         >
-          <source src={heroVideo} type="video/mp4" />
+          <source src={heroVideo1} type="video/mp4" />
         </video>
 
         {/* Overlay for readability */}
