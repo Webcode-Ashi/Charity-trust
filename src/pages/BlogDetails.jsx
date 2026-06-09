@@ -14,7 +14,7 @@ import {
 
 // Import blog-type images
 import working1 from '../assets/images/working1.png';
-import working2 from '../assets/images/working2.png';
+import working2 from '../assets/images/working6.png';
 import working3 from '../assets/images/working3.png';
 import working4 from '../assets/images/working4.png';
 import working5 from '../assets/images/working5.png';
