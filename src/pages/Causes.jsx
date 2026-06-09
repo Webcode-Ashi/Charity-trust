@@ -3,7 +3,7 @@ import gsap from 'gsap'
 import { Heart, ShieldCheck, Milestone } from 'lucide-react'
 
 // Import local images from assets
-import working2 from '../assets/images/working2.png'
+import working2 from '../assets/images/working3.png'
 import working4 from '../assets/images/working4.png'
 import working5 from '../assets/images/working5.png'
 import templeImg from '../assets/images/temple.png'
