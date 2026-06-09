@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { Landmark, QrCode, Copy, Check, Heart, ShieldCheck } from 'lucide-react'
 
+// Import local image for background
+import donateImg from '../assets/images/donation.avif'
+
 export default function DonatePage() {
   const [copiedBank, setCopiedBank] = useState(false)
   const [formSubmitted, setFormSubmitted] = useState(false)
@@ -46,12 +49,12 @@ export default function DonatePage() {
       
       {/* Page Header */}
       <section 
-        className="bg-charcoal text-white py-20 text-center relative"
+        className="bg-charcoal text-white py-32 sm:py-48 lg:py-64 text-center relative bg-no-repeat bg-cover bg-center flex flex-col justify-center"
         style={{
-          backgroundImage: 'linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.9))'
+          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url(${donateImg})`
         }}
       >
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-4xl mx-auto px-4 relative z-10">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-white">Support Our Cause</h1>
           <p className="text-brand-gold font-semibold tracking-wider uppercase text-sm mt-3">
             Your Contribution Shapes a Better Tomorrow

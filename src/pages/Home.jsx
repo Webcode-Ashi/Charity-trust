@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
-import { ArrowRight, ArrowUpRight, Gift, Users, Award, Heart, Clock, HeartHandshake, Globe, GraduationCap, HeartPulse, Utensils, Flower2, Shirt } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Gift, Users, Award, Heart, Clock, HeartHandshake, Globe, GraduationCap, HeartPulse, Utensils, Flower2, Shirt, Star, ChevronDown, ChevronUp, Play } from 'lucide-react'
 
 // Import local images from assets
 import dadiPassportImg from '../assets/images/dadi_passport.png'
@@ -18,6 +18,9 @@ import yogaImg from '../assets/images/yoga.png'
 import templeImg from '../assets/images/temple.png'
 import heroVideo from '../assets/video/Hero_section.mp4'
 import shapeImg from '../assets/images/shape.png'
+import img1 from '../assets/images/img1.png'
+import img2 from '../assets/images/img2.png'
+import presentOwnerVideo from '../assets/video/presentowner_video.mp4'
 
 export default function Home() {
   const heroRef = useRef(null)
@@ -34,6 +37,50 @@ export default function Home() {
 
   const [activeServiceIndex, setActiveServiceIndex] = useState(0)
   const [visibleServiceCards, setVisibleServiceCards] = useState(3)
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) setVisibleServiceCards(1)
+      else if (window.innerWidth < 1024) setVisibleServiceCards(2)
+      else setVisibleServiceCards(3)
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const [activeFaq, setActiveFaq] = useState(1)
+
+  const faqs = [
+    {
+      question: "What Is Charity, And Why Is It Important ?",
+      answer: "Charity Not Only Helps To Reduce Suffering But Also Fosters A Sense Of Unity And Shared Responsibility In Society."
+    },
+    {
+      question: "How Can I Get Involved In Charity Work ?",
+      answer: "Charity Not Only Helps To Reduce Suffering But Also Fosters A Sense Of Unity And Shared Responsibility In Society."
+    },
+    {
+      question: "Dedication for charitable Donations ?",
+      answer: "Charity Not Only Helps To Reduce Suffering But Also Fosters A Sense Of Unity And Shared Responsibility In Society."
+    },
+    {
+      question: "My Donations Are Going To A Charity ?",
+      answer: "Charity Not Only Helps To Reduce Suffering But Also Fosters A Sense Of Unity And Shared Responsibility In Society."
+    },
+    {
+      question: "Is my donation actually being put to use?",
+      answer: "Charity Not Only Helps To Reduce Suffering But Also Fosters A Sense Of Unity And Shared Responsibility In Society."
+    },
+    {
+      question: "Can I Volunteer For The Charity ?",
+      answer: "Charity Not Only Helps To Reduce Suffering But Also Fosters A Sense Of Unity And Shared Responsibility In Society."
+    },
+    {
+      question: "How Do I Organize A Fundraiser ?",
+      answer: "Charity Not Only Helps To Reduce Suffering But Also Fosters A Sense Of Unity And Shared Responsibility In Society."
+    }
+  ]
 
   const services = [
     {
@@ -88,23 +135,23 @@ export default function Home() {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
     tl.fromTo(titleRef.current,
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1 }
+      { x: -80, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1.2 }
     )
       .fromTo(descRef.current,
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8 },
-        '-=0.6'
+        { x: -50, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1 },
+        '-=0.8'
       )
       .fromTo(btnGroupRef.current,
-        { scale: 0.9, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.6 },
-        '-=0.4'
+        { x: -30, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.8 },
+        '-=0.6'
       )
       .fromTo(statsRef.current.children,
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.2, duration: 0.6 },
-        '-=0.2'
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.2, duration: 0.8 },
+        '-=0.4'
       )
 
     // Animate counter numbers
@@ -235,7 +282,6 @@ export default function Home() {
           muted
           playsInline
           preload="auto"
-          poster={working1}
           className="absolute inset-0 w-full h-full object-cover z-0"
         >
           <source src={heroVideo} type="video/mp4" />
@@ -244,35 +290,35 @@ export default function Home() {
         {/* Overlay for readability */}
         <div className="absolute inset-0 bg-black/60 z-10 pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto w-full relative z-20 text-center flex flex-col items-center">
-          <div className="max-w-3xl flex flex-col items-center">
-            <span className="text-brand-gold font-bold uppercase tracking-widest text-sm bg-brand-gold/10 px-4 py-1.5 rounded-full border border-brand-gold/30 inline-block w-fit self-center">
+        <div className="max-w-7xl mx-auto w-full relative z-20 flex flex-col items-start px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl flex flex-col items-start">
+            <span className="text-brand-gold font-bold uppercase tracking-widest text-sm bg-brand-gold/10 px-4 py-1.5 rounded-full border border-brand-gold/30 inline-block w-fit self-start">
               Welcome to RKCT
             </span>
             <h1
               ref={titleRef}
-              className="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight mt-6 leading-tight text-center"
+              className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight mt-6 leading-[1.1] text-left"
             >
               Serving Humanity, <br />
               <span className="text-brand-gold">Empowering Lives</span>
             </h1>
             <p
               ref={descRef}
-              className="mt-4 sm:mt-6 text-base sm:text-lg text-slate-300 leading-relaxed max-w-xl mx-auto text-center"
+              className="mt-6 sm:mt-8 text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed max-w-2xl text-left"
             >
               Ramvati Kasana Charitable Trust (RKCT) strives to create positive, sustainable changes through welfare initiatives, health camps, education support, and spiritual wellness.
             </p>
-            <div ref={btnGroupRef} className="mt-6 sm:mt-10 flex flex-wrap justify-center gap-3 sm:gap-4">
+            <div ref={btnGroupRef} className="mt-8 sm:mt-12 flex flex-wrap justify-start gap-4">
               <Link
                 to="/donate"
-                className="bg-brand-gold hover:bg-brand-gold-dark text-charcoal font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base transition-colors flex items-center gap-2"
+                className="bg-brand-gold hover:bg-brand-gold-dark text-charcoal font-bold px-8 sm:px-10 py-4 sm:py-5 rounded-full text-base sm:text-lg transition-colors flex items-center gap-2 shadow-lg hover:shadow-brand-gold/20"
               >
                 Donate Now
-                <ArrowRight size={18} />
+                <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 to="/about"
-                className="bg-transparent hover:bg-white/10 text-white border border-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base font-bold transition-all"
+                className="bg-transparent hover:bg-white/10 text-white border-2 border-white/50 hover:border-white px-8 sm:px-10 py-4 sm:py-5 rounded-full text-base sm:text-lg font-bold transition-all"
               >
                 Learn More
               </Link>
@@ -293,7 +339,7 @@ export default function Home() {
 
       {/* Stats Section */}
       <section className="bg-brand-gold py-8 sm:py-12 text-charcoal shadow-inner relative z-10 -mt-8 mx-4 max-w-6xl lg:mx-auto rounded-2xl">
-        <div ref={statsRef} className="max-w-7xl mx-auto px-3 sm:px-4 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+        <div ref={statsRef} className="max-w-7xl mx-auto px-3 sm:px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           <div className="flex flex-col items-center justify-center text-center">
             <div className="p-2 sm:p-3 bg-charcoal/10 rounded-full mb-2 sm:mb-3">
               <Users size={20} sm:size={24} className="text-charcoal" />
@@ -356,7 +402,7 @@ export default function Home() {
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 />
               </div>
-              <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-brand-green text-white p-4 sm:p-6 rounded-2xl shadow-lg max-w-[200px] sm:max-w-[240px] border border-brand-green-light z-20">
+              <div className="relative sm:absolute mt-6 sm:mt-0 sm:-bottom-6 sm:-right-6 mx-auto sm:mx-0 bg-brand-green text-white p-5 sm:p-6 rounded-2xl shadow-lg max-w-[260px] sm:max-w-[240px] border border-brand-green-light z-20 text-center sm:text-left">
                 <p className="text-xs uppercase tracking-widest text-brand-gold font-bold">In Loving Memory</p>
                 <p className="font-extrabold text-base sm:text-lg mt-1">Smt. Ramvati Kasana</p>
                 <p className="text-xs sm:text-sm text-slate-200 mt-1">Our guiding light and source of eternal inspiration.</p>
@@ -396,6 +442,49 @@ export default function Home() {
                   Discover Our Story
                   <ArrowRight size={16} />
                 </Link>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Shri K.P. Singh Kasana Section (Moved from About) */}
+      <section className="py-16 bg-slate-50 border-t border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            
+            {/* Left Text Column (Shortened) */}
+            <div className="space-y-4 order-2 lg:order-1">
+              <span className="text-brand-green font-bold uppercase tracking-widest text-sm bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20">
+                Our Visionary Leader
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-charcoal leading-tight">
+                Shri K.P. Singh Kasana
+              </h2>
+              <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+                Shri K.P. Singh Kasana is a respected social reformer, visionary leader, and successful entrepreneur dedicated to the service of society and nation-building. Guided by the principles of integrity, compassion, and inclusive development, he has consistently worked to improve education, healthcare, environmental sustainability, and community welfare.
+              </p>
+              <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+                Through his leadership, he has inspired countless individuals and contributed to initiatives that create opportunities and empower communities. His efforts reflect a deep belief in collective progress and the well-being of every individual.
+              </p>
+            </div>
+
+            {/* Right Video Column (Enlarged Height) */}
+            <div className="flex justify-center order-1 lg:order-2">
+              <div className="relative group w-full max-w-sm lg:max-w-md">
+                <div className="absolute inset-0 bg-brand-green rounded-2xl rotate-3 scale-95 transition-all duration-300 group-hover:rotate-0"></div>
+                <div className="relative overflow-hidden rounded-2xl bg-charcoal shadow-xl border-4 border-white aspect-[4/3] flex items-center justify-center">
+                  <video 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline 
+                    className="w-full h-full object-contain bg-black"
+                  >
+                    <source src={presentOwnerVideo} type="video/mp4" />
+                  </video>
+                </div>
               </div>
             </div>
 
@@ -467,7 +556,7 @@ export default function Home() {
             {/* Right Column: Dynamic Image Collage */}
             <div className="w-full lg:mt-0 mt-8">
               {/* Mobile/Tablet 3-Column Layout */}
-              <div className="grid grid-cols-3 gap-3 sm:gap-4 lg:hidden max-w-2xl mx-auto w-full">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 lg:hidden max-w-2xl mx-auto w-full">
                 <div className="rounded-2xl overflow-hidden shadow-md border-2 border-white aspect-[3/4]">
                   <img 
                     src={working1} 
@@ -537,7 +626,7 @@ export default function Home() {
       </section>
 
       {/* Charity Services Section */}
-      <section className="py-20 lg:py-28 bg-white border-t border-slate-100 overflow-hidden relative">
+      <section className="py-20 lg:py-28 bg-slate-50 border-t border-slate-100 overflow-hidden relative">
         {/* Subtle decorative splash on the left edge, matching the design style */}
         <div className="absolute left-[-60px] top-[15%] z-0 w-[200px] h-[80px] pointer-events-none overflow-hidden select-none opacity-30">
           <img
@@ -565,7 +654,7 @@ export default function Home() {
             <div 
               className="flex transition-transform duration-500 ease-in-out gap-6"
               style={{
-                transform: `translateX(-${activeServiceIndex * (100 / visibleServiceCards)}%)`,
+                transform: `translateX(calc(-${activeServiceIndex * (100 / visibleServiceCards)}% - ${(activeServiceIndex * 24) / visibleServiceCards}px))`
               }}
             >
               {services.map((service, index) => {
@@ -573,27 +662,27 @@ export default function Home() {
                 return (
                   <div
                     key={index}
-                    className="flex-shrink-0 relative pt-20 px-8 pb-12 rounded-[2rem] shadow-lg border border-slate-100/50 mt-14 transition-all duration-300 select-none flex flex-col items-center text-center justify-between group"
+                    className="flex-shrink-0 relative pt-20 px-8 pb-12 rounded-[2rem] shadow-lg border border-slate-100/50 mt-14 transition-all duration-700 select-none flex flex-col items-center text-center justify-between group"
                     style={{
                       width: `calc(${100 / visibleServiceCards}% - ${(visibleServiceCards - 1) * 24 / visibleServiceCards}px)`,
                     }}
                   >
                     {/* Background clipping wrapper (restricting overlay to rounded corners, allowing icon to overflow on top) */}
-                    <div className="absolute inset-0 bg-white border border-slate-100/80 shadow-md rounded-[2rem] overflow-hidden -z-20">
+                    <div className="absolute inset-0 bg-brand-gold sm:bg-white border border-slate-200/80 shadow-md rounded-[2rem] overflow-hidden -z-20">
                       {/* Sliding Gold Background Overlay on Hover (slides from top) */}
-                      <div className="absolute inset-x-0 top-0 h-0 bg-brand-gold transition-all duration-300 ease-in-out group-hover:h-full" />
+                      <div className="absolute inset-0 bg-brand-gold origin-top transform scale-y-0 transition-transform duration-[800ms] ease-out group-hover:scale-y-100 sm:block hidden" />
                     </div>
 
                     {/* Circle Icon overlapping the top */}
-                    <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 bg-white rounded-full border-4 border-slate-50 text-brand-green flex items-center justify-center shadow-md transition-all duration-500 group-hover:border-brand-gold z-10">
+                    <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 bg-white rounded-full border-4 border-brand-gold sm:border-slate-50 text-brand-green flex items-center justify-center shadow-md transition-all duration-500 group-hover:border-brand-gold z-10">
                       <Icon size={40} />
                     </div>
 
                     <div className="flex-grow flex flex-col justify-center mt-4 relative z-10">
-                      <h3 className="font-extrabold text-2xl mb-4 text-charcoal transition-colors duration-300">
+                      <h3 className="font-extrabold text-2xl mb-4 text-charcoal transition-colors duration-700">
                         {service.title}
                       </h3>
-                      <p className="text-base leading-relaxed mb-8 px-2 text-slate-500 transition-colors duration-300 group-hover:text-charcoal/90">
+                      <p className="text-base leading-relaxed mb-8 px-2 text-slate-700 sm:text-slate-500 transition-colors duration-700 group-hover:text-charcoal/90">
                         {service.description}
                       </p>
                     </div>
@@ -614,7 +703,7 @@ export default function Home() {
           </div>
 
           {/* Navigation Controls (Arrows & Dots) */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-8">
+          <div className="flex flex-row items-center justify-center gap-4 sm:gap-6 mt-8">
             {/* Prev Arrow */}
             <button
               onClick={() => {
@@ -874,9 +963,172 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-20 lg:py-28 bg-white border-t border-slate-100 overflow-hidden relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
+          <div className="mb-12 sm:mb-16 space-y-4 max-w-2xl">
+            <span className="text-brand-green font-bold uppercase tracking-widest text-xs bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20 inline-flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-green"></span>
+              TESTIMONIALS
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-green leading-tight">
+              What people say about charity.
+            </h2>
+          </div>
+
+          {/* Testimonial Card Container */}
+          <div className="bg-[#FAF8F3] rounded-[2rem] sm:rounded-[3rem] overflow-hidden flex flex-col lg:flex-row relative z-10 shadow-lg">
+            {/* Left side Image */}
+            <div className="w-full lg:w-[45%] h-[350px] sm:h-[400px] lg:h-auto relative">
+              <img 
+                src={working6} 
+                alt="Testimonial" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Right side Content */}
+            <div className="w-full lg:w-[55%] p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
+              {/* Stars */}
+              <div className="flex gap-1.5 text-brand-gold mb-6">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <Star key={star} size={20} className="fill-current" />
+                ))}
+              </div>
+
+              {/* Quote */}
+              <p className="text-slate-500 text-base sm:text-lg leading-relaxed mb-10">
+                Overall, I Cannot Recommend The Gourmet Bistro Highly Enough. If You're Looking For A Restaurant That Serves Delicious, Beautifully Presented Dishes With Impeccable Service, Look No Further. I Will Definitely Be Returning Soon To Try More Of Their Culinary Delights"
+              </p>
+
+              {/* Author */}
+              <div>
+                <h4 className="text-2xl sm:text-3xl font-extrabold text-brand-green font-serif">Jonny Ananta</h4>
+                <span className="text-slate-400 text-sm mt-1 block">Regular Customer's</span>
+              </div>
+
+              {/* Divider */}
+              <div className="h-px w-full bg-slate-200/80 my-8 sm:my-10"></div>
+
+              {/* Stats / Partners */}
+              <div>
+                <p className="text-slate-500 text-sm sm:text-base font-bold">
+                  Total Raising Money In This Year <span className="text-charcoal ml-1">&gt; $4,50,000</span>
+                </p>
+                {/* Fake logos row using lucide icons as placeholders for now */}
+                <div className="flex items-center gap-6 sm:gap-10 mt-6 opacity-30 grayscale pointer-events-none">
+                  <Globe size={40} className="stroke-[1.5px]" />
+                  <Shirt size={40} className="stroke-[1.5px]" />
+                  <HeartPulse size={40} className="stroke-[1.5px]" />
+                  <HeartHandshake size={40} className="stroke-[1.5px]" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 lg:py-28 bg-white border-t border-slate-100 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-stretch">
+            
+            {/* Left side: Header & Accordion */}
+            <div className="w-full lg:w-1/2 flex flex-col">
+              {/* Header */}
+              <div className="mb-8 space-y-5">
+                <span className="text-brand-green font-bold uppercase tracking-widest text-xs bg-white px-4 py-1.5 rounded-full border border-brand-green/30 inline-flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-green"></span>
+                  OUR FAQ
+                </span>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F4239] leading-tight font-serif">
+                  Explore our faqs for quick and helpful guidance
+                </h2>
+                <p className="text-slate-500 text-sm sm:text-base leading-relaxed">
+                  Charity Not Only Helps To Reduce Suffering But Also Fosters A Sense Of Unity And Shared Responsibility In Society. It Reminds Us Of The Can Make It Your Significant Difference In Someone's Life.
+                </p>
+              </div>
+
+              {/* Accordion */}
+              <div className="space-y-4">
+                {faqs.map((faq, idx) => {
+                const isActive = activeFaq === idx;
+                return (
+                  <div key={idx} className="flex flex-col overflow-hidden">
+                    <button
+                      onClick={() => setActiveFaq(isActive ? null : idx)}
+                      className={`w-full flex items-center justify-between p-5 sm:p-6 text-left transition-all duration-300 font-extrabold text-base sm:text-lg ${
+                        isActive 
+                          ? 'bg-[#0F4239] text-brand-gold' 
+                          : 'bg-[#F8F5EB] text-charcoal hover:bg-[#f0eee6]'
+                      }`}
+                    >
+                      <span>{faq.question}</span>
+                      <span className={`flex-shrink-0 ml-4 transition-transform duration-300 ${isActive ? 'text-brand-gold' : 'text-charcoal'}`}>
+                        {isActive ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+                      </span>
+                    </button>
+                    
+                    {/* Answer Area */}
+                    <div 
+                      className={`transition-all duration-500 ease-in-out overflow-hidden ${
+                        isActive ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'
+                      }`}
+                    >
+                      <div className="p-5 sm:p-6 bg-white border-b text-slate-500 text-sm sm:text-base leading-relaxed">
+                        {faq.answer}
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+              </div>
+            </div>
+
+            {/* Right side: Video/Images */}
+            <div className="w-full lg:w-1/2 flex flex-col">
+              {/* Two Images Stacked Layout */}
+              <div className="flex flex-col gap-6 sm:gap-8 w-full flex-1 min-h-[600px] lg:min-h-0">
+                
+                {/* Image 1 */}
+                <div className="relative w-full flex-1 rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-xl group cursor-pointer min-h-[300px]">
+                  <img 
+                    src={img1} 
+                    alt="FAQ Image 1" 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-charcoal/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                </div>
+
+                {/* Image 2 with Play Button */}
+                <div className="relative w-full flex-1 rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-xl group cursor-pointer min-h-[300px]">
+                  <img 
+                    src={img2} 
+                    alt="FAQ Video 2" 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-charcoal/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                  
+                  {/* Play Button */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 bg-brand-gold/40 rounded-full flex items-center justify-center animate-pulse">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center text-brand-gold shadow-md hover:scale-110 transition-transform duration-300">
+                      <Play size={24} className="fill-current ml-1" />
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* Dynamic CTA Banner */}
-      <section className="bg-charcoal text-white relative py-12 sm:py-20 overflow-hidden px-4">
-        <div className="absolute inset-0 bg-brand-green/20 mix-blend-overlay"></div>
+      <section className="bg-brand-green text-white relative py-12 sm:py-20 overflow-hidden px-4">
+        {/* Subtle overlay to give it depth */}
+        <div className="absolute inset-0 bg-black/10 mix-blend-overlay"></div>
         <div className="max-w-5xl mx-auto text-center relative z-10 space-y-4 sm:space-y-6">
           <span className="text-brand-gold font-bold uppercase tracking-widest text-xs sm:text-sm block">
             Join Our Hands

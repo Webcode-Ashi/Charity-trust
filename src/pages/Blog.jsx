@@ -129,12 +129,12 @@ Over time, several local structures have fallen into disrepair. RKCT has taken a
       
       {/* Hero Header */}
       <section 
-        className="bg-charcoal text-white py-20 text-center relative"
+        className="bg-charcoal text-white py-32 sm:py-48 lg:py-64 text-center relative bg-no-repeat bg-cover bg-top flex flex-col justify-center"
         style={{
-          backgroundImage: 'linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.95))'
+          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.75), rgba(0,0,0,0.9)), url(${work1})`
         }}
       >
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-4xl mx-auto px-4 relative z-10">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-white">Trust Blog & Updates</h1>
           <p className="text-brand-gold font-semibold tracking-wider uppercase text-sm mt-3">
             Stories of Impact, Welfare Drives, and Community Service

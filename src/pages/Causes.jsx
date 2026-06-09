@@ -8,6 +8,7 @@ import working4 from '../assets/images/working4.png'
 import working5 from '../assets/images/working5.png'
 import templeImg from '../assets/images/temple.png'
 import img9 from '../assets/images/img9.png'
+import causeImg from '../assets/images/casue_section.png'
 
 export default function Causes() {
   const containerRef = useRef(null)
@@ -77,12 +78,12 @@ export default function Causes() {
       
       {/* Page Header */}
       <section 
-        className="bg-charcoal text-white py-20 text-center relative"
+        className="bg-charcoal text-white py-32 sm:py-48 lg:py-64 text-center relative bg-no-repeat bg-cover bg-center flex flex-col justify-center"
         style={{
-          backgroundImage: 'linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.9))'
+          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url(${causeImg})`
         }}
       >
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-4xl mx-auto px-4 relative z-10">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-white">Our Causes & Campaigns</h1>
           <p className="text-brand-gold font-semibold tracking-wider uppercase text-sm mt-3">
             Real Initiatives Creating Tangible Impacts
