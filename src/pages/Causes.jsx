@@ -76,19 +76,27 @@ export default function Causes() {
   return (
     <div className="flex-grow bg-slate-50">
       
-      {/* Page Header */}
+      {/* Hero Header */}
       <section 
-        className="bg-charcoal text-white py-32 sm:py-48 lg:py-64 text-center relative bg-no-repeat bg-cover bg-center flex flex-col justify-center"
+        className="bg-charcoal text-white py-32 sm:py-48 text-left relative bg-no-repeat bg-cover bg-center flex flex-col justify-center"
         style={{
           backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url(${causeImg})`
         }}
       >
-        <div className="max-w-4xl mx-auto px-4 relative z-10">
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-white">Our Causes & Campaigns</h1>
-          <p className="text-brand-gold font-semibold tracking-wider uppercase text-sm mt-3">
-            Real Initiatives Creating Tangible Impacts
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-left">
+          <span className="text-brand-gold font-bold uppercase tracking-widest text-sm bg-brand-gold/10 px-4 py-1.5 rounded-full border border-brand-gold/30 inline-block w-fit self-start mb-4">
+            Our Initiatives
+          </span>
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight drop-shadow-lg text-left">
+            Our Causes & Campaigns
+          </h1>
+          <p className="text-brand-gold font-bold tracking-widest uppercase text-sm sm:text-base mt-2 sm:mt-3 drop-shadow-md">
+            Driving Change Through Focused Initiatives
           </p>
-          <div className="w-20 h-1 bg-brand-gold mx-auto mt-6 rounded-full"></div>
+          <p className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed max-w-2xl text-left">
+            Discover the various campaigns and initiatives we are actively running to support education, healthcare, and community welfare.
+          </p>
+          <div className="w-20 h-1 bg-brand-gold mt-8 sm:mt-10 rounded-full shadow-lg"></div>
         </div>
       </section>
 

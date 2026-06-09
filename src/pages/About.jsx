@@ -154,7 +154,7 @@ export default function About() {
       {/* Header Banner with Video */}
       <section 
         ref={headerRef}
-        className="relative bg-charcoal text-white py-28 sm:py-36 text-center overflow-hidden flex flex-col justify-center min-h-[60vh] lg:min-h-[85vh]"
+        className="relative bg-charcoal text-white py-28 sm:py-36 text-left overflow-hidden flex flex-col justify-center min-h-[60vh] lg:min-h-[85vh]"
       >
         {/* Background Video */}
         <video
@@ -164,6 +164,7 @@ export default function About() {
           playsInline
           preload="auto"
           onEnded={(e) => e.target.play()}
+          onCanPlay={(e) => { e.target.playbackRate = 0.5 }}
           className="absolute inset-0 w-full h-full object-cover z-0"
         >
           <source src={aboutHeroVideo} type="video/mp4" />
@@ -172,14 +173,20 @@ export default function About() {
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/60 z-10 pointer-events-none" />
         
-        <div className="max-w-4xl mx-auto px-4 relative z-20 flex flex-col items-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-tight drop-shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 flex flex-col items-start w-full">
+          <span className="text-brand-gold font-bold uppercase tracking-widest text-sm bg-brand-gold/10 px-4 py-1.5 rounded-full border border-brand-gold/30 inline-block w-fit self-start mb-4">
+            Discover Our Story
+          </span>
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight drop-shadow-lg text-left">
             About Our Trust
           </h1>
-          <p className="text-brand-gold font-bold tracking-widest uppercase text-sm sm:text-base mt-4 sm:mt-6 drop-shadow-md">
+          <p className="text-brand-gold font-bold tracking-widest uppercase text-sm sm:text-base mt-2 sm:mt-3 drop-shadow-md">
             Ramvati Kasana Charitable Trust (RKCT)
           </p>
-          <div className="w-24 h-1.5 bg-brand-gold mx-auto mt-8 sm:mt-10 rounded-full shadow-lg"></div>
+          <p className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed max-w-2xl text-left">
+            Learn about our journey, our founders, and the core values that drive us to serve the community every day.
+          </p>
+          <div className="w-24 h-1.5 bg-brand-gold mt-8 sm:mt-10 rounded-full shadow-lg"></div>
         </div>
       </section>
 
@@ -204,7 +211,7 @@ export default function About() {
 
             {/* Right Text Column */}
             <div className="space-y-6">
-              <span className="text-brand-green font-bold uppercase tracking-widest text-sm bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20">
+              <span className="text-brand-green font-bold uppercase tracking-widest text-sm bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20 inline-block mb-1">
                 Guiding Inspiration
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-charcoal leading-tight">
@@ -232,7 +239,7 @@ export default function About() {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <span className="text-brand-gold font-bold uppercase tracking-widest text-sm bg-brand-gold/10 px-4 py-1.5 rounded-full border border-brand-gold/30">
+            <span className="text-brand-gold font-bold uppercase tracking-widest text-sm bg-brand-gold/10 px-4 py-1.5 rounded-full border border-brand-gold/30 inline-block mb-1">
               Our Core Philosophy
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
@@ -283,7 +290,7 @@ export default function About() {
           
           {/* Section Header */}
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <span className="text-brand-green font-bold uppercase tracking-widest text-sm bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20">
+            <span className="text-brand-green font-bold uppercase tracking-widest text-sm bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20 inline-block mb-1">
               Our Leadership
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-charcoal">
@@ -471,7 +478,7 @@ export default function About() {
           
           {/* Header */}
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <span className="text-brand-green font-bold uppercase tracking-widest text-sm bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20">
+            <span className="text-brand-green font-bold uppercase tracking-widest text-sm bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20 inline-block mb-1">
               Trust Credentials
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-charcoal">

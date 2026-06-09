@@ -6,7 +6,7 @@ import { ArrowRight, ArrowUpRight, Gift, Users, Award, Heart, Clock, HeartHandsh
 // Import local images from assets
 import dadiPassportImg from '../assets/images/dadi_passport.png'
 import working1 from '../assets/images/working1.png'
-import working2 from '../assets/images/working2.png'
+import working2 from '../assets/images/working5.png'
 import working3 from '../assets/images/working3.png'
 import working4 from '../assets/images/working4.png'
 import working5 from '../assets/images/working5.png'
@@ -17,10 +17,10 @@ import work3 from '../assets/images/work3.png'
 import yogaImg from '../assets/images/yoga.png'
 import templeImg from '../assets/images/temple.png'
 import heroVideo from '../assets/video/Hero_section.mp4'
-import shapeImg from '../assets/images/shape.png'
+import aboutHeroVideo from '../assets/video/about_hero.mp4'
 import img1 from '../assets/images/img1.png'
 import img2 from '../assets/images/img2.png'
-import presentOwnerVideo from '../assets/video/presentowner_video.mp4'
+import presentOwnerImg from '../assets/images/present_owner1.png'
 
 export default function Home() {
   const heroRef = useRef(null)
@@ -50,6 +50,35 @@ export default function Home() {
   }, [])
 
   const [activeFaq, setActiveFaq] = useState(1)
+
+  const faqVideo1Ref = useRef(null)
+  const faqVideo2Ref = useRef(null)
+  const [isPlaying1, setIsPlaying1] = useState(false)
+  const [isPlaying2, setIsPlaying2] = useState(false)
+
+  const toggleVideo1 = () => {
+    if (faqVideo1Ref.current) {
+      if (isPlaying1) {
+        faqVideo1Ref.current.pause()
+        setIsPlaying1(false)
+      } else {
+        faqVideo1Ref.current.play()
+        setIsPlaying1(true)
+      }
+    }
+  }
+
+  const toggleVideo2 = () => {
+    if (faqVideo2Ref.current) {
+      if (isPlaying2) {
+        faqVideo2Ref.current.pause()
+        setIsPlaying2(false)
+      } else {
+        faqVideo2Ref.current.play()
+        setIsPlaying2(true)
+      }
+    }
+  }
 
   const faqs = [
     {
@@ -267,6 +296,39 @@ export default function Home() {
     }
   ]
 
+  const testimonials = [
+    {
+      quote: "The Ramvati Kasana Charitable Trust is doing incredible work for the community. Their dedication to providing education and healthcare to those in need is truly inspiring. I've seen firsthand the positive impact they've made on countless lives.",
+      author: "Aarti Sharma",
+      role: "Volunteer"
+    },
+    {
+      quote: "Donating to RKCT has been one of the most fulfilling experiences. Their transparency and the way they ensure every penny reaches the underprivileged is commendable. Proud to be associated with such a noble cause.",
+      author: "Rajesh Kumar",
+      role: "Regular Donor"
+    },
+    {
+      quote: "The holistic health and yoga camps organized by the trust have brought so much awareness and wellness to our neighborhood. It's beautiful to see a team so committed to uplifting society physically and mentally.",
+      author: "Vikram Singh",
+      role: "Beneficiary"
+    }
+  ];
+
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [fadeTestimonial, setFadeTestimonial] = useState(true);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setFadeTestimonial(false);
+      setTimeout(() => {
+        setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
+        setFadeTestimonial(true);
+      }, 300);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="flex-grow">
 
@@ -282,6 +344,7 @@ export default function Home() {
           muted
           playsInline
           preload="auto"
+          onCanPlay={(e) => { e.target.playbackRate = 0.5 }}
           className="absolute inset-0 w-full h-full object-cover z-0"
         >
           <source src={heroVideo} type="video/mp4" />
@@ -297,28 +360,28 @@ export default function Home() {
             </span>
             <h1
               ref={titleRef}
-              className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight mt-6 leading-[1.1] text-left"
+              className="text-[32px] sm:text-5xl md:text-6xl lg:text-[70px] font-extrabold tracking-tight mt-6 leading-[1.15] text-left"
             >
               Serving Humanity, <br />
-              <span className="text-brand-gold">Empowering Lives</span>
+              <span className="text-brand-gold mt-1 sm:mt-0 inline-block">Empowering Lives</span>
             </h1>
             <p
               ref={descRef}
-              className="mt-6 sm:mt-8 text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed max-w-2xl text-left"
+              className="mt-6 sm:mt-8 text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed max-w-2xl text-left"
             >
               Ramvati Kasana Charitable Trust (RKCT) strives to create positive, sustainable changes through welfare initiatives, health camps, education support, and spiritual wellness.
             </p>
             <div ref={btnGroupRef} className="mt-8 sm:mt-12 flex flex-wrap justify-start gap-4">
               <Link
                 to="/donate"
-                className="bg-brand-gold hover:bg-brand-gold-dark text-charcoal font-bold px-8 sm:px-10 py-4 sm:py-5 rounded-full text-base sm:text-lg transition-colors flex items-center gap-2 shadow-lg hover:shadow-brand-gold/20"
+                className="bg-brand-gold hover:bg-brand-gold-dark text-charcoal font-bold px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base transition-colors flex items-center gap-2 shadow-lg hover:shadow-brand-gold/20"
               >
                 Donate Now
                 <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 to="/about"
-                className="bg-transparent hover:bg-white/10 text-white border-2 border-white/50 hover:border-white px-8 sm:px-10 py-4 sm:py-5 rounded-full text-base sm:text-lg font-bold transition-all"
+                className="bg-transparent hover:bg-white/10 text-white border-2 border-white/50 hover:border-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-bold transition-all"
               >
                 Learn More
               </Link>
@@ -326,15 +389,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Decorative Shape Image in Bottom-Left Corner */}
-        <div className="absolute bottom-0 left-0 z-10 w-[240px] h-[90px] sm:w-[320px] sm:h-[120px] md:w-[400px] md:h-[150px] lg:w-[460px] lg:h-[175px] pointer-events-none overflow-hidden">
-          <img
-            src={shapeImg}
-            alt="decorative shape"
-            className="w-full absolute top-0 left-0 object-fill"
-            style={{ height: '390.6%' }}
-          />
-        </div>
+
       </section>
 
       {/* Stats Section */}
@@ -411,7 +466,7 @@ export default function Home() {
 
             {/* Right Column: Text */}
             <div className="space-y-6 lg:pl-6 mt-12 lg:mt-0">
-              <span className="text-brand-green font-bold uppercase tracking-widest text-sm bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20">
+              <span className="text-brand-green font-bold uppercase tracking-widest text-sm bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20 inline-block mb-1">
                 Who We Are
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-charcoal leading-tight">
@@ -453,10 +508,10 @@ export default function Home() {
       <section className="py-16 bg-slate-50 border-t border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            
+
             {/* Left Text Column (Shortened) */}
             <div className="space-y-4 order-2 lg:order-1">
-              <span className="text-brand-green font-bold uppercase tracking-widest text-sm bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20">
+              <span className="text-brand-green font-bold uppercase tracking-widest text-sm bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20 inline-block mb-1">
                 Our Visionary Leader
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-charcoal leading-tight">
@@ -475,15 +530,11 @@ export default function Home() {
               <div className="relative group w-full max-w-sm lg:max-w-md">
                 <div className="absolute inset-0 bg-brand-green rounded-2xl rotate-3 scale-95 transition-all duration-300 group-hover:rotate-0"></div>
                 <div className="relative overflow-hidden rounded-2xl bg-charcoal shadow-xl border-4 border-white aspect-[4/3] flex items-center justify-center">
-                  <video 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline 
-                    className="w-full h-full object-contain bg-black"
-                  >
-                    <source src={presentOwnerVideo} type="video/mp4" />
-                  </video>
+                  <img
+                    src={presentOwnerImg}
+                    alt="Shri K.P. Singh Kasana"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>
@@ -492,20 +543,89 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Premium Health Section */}
+      <section className="py-10 lg:py-10 bg-[#245331] text-white relative overflow-hidden">
+        {/* Subtle Background Pattern / Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-transparent pointer-events-none"></div>
+        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-brand-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-brand-green-light/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Content */}
+            <div className="space-y-6">
+              <span className="text-brand-gold font-bold uppercase tracking-widest text-sm bg-brand-gold/10 px-4 py-1.5 rounded-full border border-brand-gold/30 inline-block mb-1">
+                Expert Medical Care
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+                Healing Hands of <br /> <span className="text-brand-gold">Dr. K.P. Sharma</span>
+              </h2>
+              <p className="text-slate-300 leading-relaxed text-base sm:text-lg">
+                Beyond being a visionary leader, Dr. K.P. Sharma is a dedicated medical professional. He personally conducts free health checkups and examines patients at our charitable medical camps, bringing expert care directly to those who need it most.
+              </p>
+
+              {/* Feature Points */}
+              <div className="space-y-4 pt-4">
+                <div className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
+                  <div className="p-3 bg-brand-gold/20 rounded-xl text-brand-gold">
+                    <HeartPulse size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg text-white">Personal Patient Care</h4>
+                    <p className="text-sm text-slate-400">Direct consultations and accurate diagnoses.</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
+                  <div className="p-3 bg-brand-gold/20 rounded-xl text-brand-gold">
+                    <Award size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg text-white">Expert Medical Advice</h4>
+                    <p className="text-sm text-slate-400">Years of medical experience dedicated to charity.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Visual / Image */}
+            <div className="relative w-full h-[400px] sm:h-[500px] rounded-[3rem] overflow-hidden border-4 border-brand-gold/20 shadow-2xl group">
+              <img
+                src={working6}
+                alt="Dr. K.P. Sharma checking patient"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              {/* Premium Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#245331]/90 via-transparent to-transparent flex flex-col justify-end p-6 sm:p-8">
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 p-5 sm:p-6 rounded-3xl inline-block shadow-xl">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="flex">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} size={16} className="fill-brand-gold text-brand-gold" />
+                      ))}
+                    </div>
+                    <span className="text-brand-gold font-bold text-sm tracking-wide">Trusted Care</span>
+                  </div>
+                  <p className="text-white font-medium text-sm sm:text-base leading-snug">"Providing free, high-quality medical treatment to the underprivileged."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Working Section */}
       <section className="py-20 lg:py-28 bg-white border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            
+
             {/* Left Column: Text & Features */}
             <div className="space-y-8">
               <div className="space-y-4">
-                <span className="text-brand-green font-bold uppercase tracking-widest text-sm bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20">
+                <span className="text-brand-green my-10 font-bold uppercase tracking-widest text-sm bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20 inline-block mb-1">
                   Our Working Model
                 </span>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-charcoal leading-tight">
-                  Our goal is to save more lives <br className="hidden sm:inline" />
-                  with your help.
+                  Our goal is to save more lives with your help.
                 </h2>
                 <p className="text-slate-600 leading-relaxed text-base max-w-xl">
                   Ramvati Kasana Charitable Trust is committed to breaking the cycle of poverty and distress by acting as a direct channel of support. Through targeted campaigns, local field operations, and community involvement, we make sure every donation creates a tangible impact.
@@ -558,24 +678,24 @@ export default function Home() {
               {/* Mobile/Tablet 3-Column Layout */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 lg:hidden max-w-2xl mx-auto w-full">
                 <div className="rounded-2xl overflow-hidden shadow-md border-2 border-white aspect-[3/4]">
-                  <img 
-                    src={working1} 
-                    alt="Welfare outreach" 
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
+                  <img
+                    src={working1}
+                    alt="Welfare outreach"
+                    className="w-full h-full object-cover transition-all duration-300"
                   />
                 </div>
                 <div className="rounded-2xl overflow-hidden shadow-md border-2 border-white aspect-[3/4]">
-                  <img 
-                    src={working2} 
-                    alt="Smiling child" 
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
+                  <img
+                    src={working2}
+                    alt="Smiling child"
+                    className="w-full h-full object-cover transition-all duration-300"
                   />
                 </div>
                 <div className="rounded-2xl overflow-hidden shadow-md border-2 border-white aspect-[3/4]">
-                  <img 
-                    src={working3} 
-                    alt="Blanket distribution" 
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
+                  <img
+                    src={working3}
+                    alt="Blanket distribution"
+                    className="w-full h-full object-cover transition-all duration-300"
                   />
                 </div>
               </div>
@@ -584,38 +704,33 @@ export default function Home() {
               <div className="hidden lg:block relative h-[550px] sm:h-[650px] w-full max-w-[620px] mx-auto">
                 {/* Top-Left Image */}
                 <div className="absolute top-[20px] left-0 w-[54%] aspect-square rounded-[2.2rem] overflow-hidden shadow-lg border-4 border-white z-0">
-                  <img 
-                    src={working1} 
-                    alt="Welfare outreach" 
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  <img
+                    src={working1}
+                    alt="Welfare outreach"
+                    className="w-full h-full object-cover transition-all duration-500"
                   />
                 </div>
 
                 {/* Middle-Right Image with Overlapping Splash Shape */}
                 <div className="absolute top-[80px] right-0 w-[54%] aspect-[3/4] rounded-[2.8rem] overflow-hidden shadow-xl border-4 border-white z-10">
-                  <img 
-                    src={working2} 
-                    alt="Smiling child" 
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  <img
+                    src={working2}
+                    alt="Smiling child"
+                    className="w-full h-full object-cover transition-all duration-500"
                   />
                 </div>
 
-                {/* Decorative Splash Shape overlapping the right edge of Middle-Right Image */}
-                <img
-                  src={shapeImg}
-                  alt="splash decoration"
-                  className="absolute right-[-54px] top-[160px] w-[180px] h-auto rotate-90 z-20 pointer-events-none select-none"
-                />
+
 
                 {/* Bottom-Left Image with Clipped Bottom-Left Corner */}
-                <div 
+                <div
                   className="absolute bottom-[20px] left-[5%] w-[54%] aspect-square overflow-hidden shadow-lg border-4 border-white rounded-[2.2rem] z-20"
                   style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 50px 100%, 0 calc(100% - 50px))' }}
                 >
-                  <img 
-                    src={working3} 
-                    alt="Blanket distribution" 
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  <img
+                    src={working3}
+                    alt="Blanket distribution"
+                    className="w-full h-full object-cover transition-all duration-500"
                   />
                 </div>
               </div>
@@ -627,15 +742,7 @@ export default function Home() {
 
       {/* Charity Services Section */}
       <section className="py-20 lg:py-28 bg-slate-50 border-t border-slate-100 overflow-hidden relative">
-        {/* Subtle decorative splash on the left edge, matching the design style */}
-        <div className="absolute left-[-60px] top-[15%] z-0 w-[200px] h-[80px] pointer-events-none overflow-hidden select-none opacity-30">
-          <img
-            src={shapeImg}
-            alt="splash decoration"
-            className="w-full absolute top-0 left-0 object-fill"
-            style={{ height: '390.6%' }}
-          />
-        </div>
+
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Header */}
@@ -651,7 +758,7 @@ export default function Home() {
 
           {/* Carousel Slider Window */}
           <div className="relative overflow-hidden w-full pb-6">
-            <div 
+            <div
               className="flex transition-transform duration-500 ease-in-out gap-6"
               style={{
                 transform: `translateX(calc(-${activeServiceIndex * (100 / visibleServiceCards)}% - ${(activeServiceIndex * 24) / visibleServiceCards}px))`
@@ -790,12 +897,7 @@ export default function Home() {
                       alt={cause.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    {/* Splash shape rotated 90 degrees clockwise aligned on the right edge */}
-                    <img 
-                      src={shapeImg} 
-                      alt="splash decoration" 
-                      className="absolute right-[-30px] sm:right-[-35px] top-1/2 -translate-y-1/2 w-[100px] sm:w-[115px] h-auto rotate-90 z-20 pointer-events-none select-none" 
-                    />
+
                   </div>
 
                   {/* Right Side: Content details */}
@@ -818,14 +920,14 @@ export default function Home() {
                           style={{ width: `${cause.percent}%` }}
                         />
                         {/* Percentage Tooltip Badge (vertically centered overlaying the bar) */}
-                        <div 
+                        <div
                           className={`absolute top-1/2 -translate-y-1/2 -translate-x-1/2 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm ${isGoldBar ? 'bg-brand-gold' : 'bg-brand-green'}`}
                           style={{ left: `${cause.percent}%` }}
                         >
                           {cause.percent}%
                         </div>
                       </div>
-                      
+
                       {/* Fixed goals & raised data at the bottom */}
                       <div className="flex justify-between text-xs sm:text-sm font-bold text-slate-500 mt-4">
                         <span>Goal : {cause.goal}</span>
@@ -892,7 +994,7 @@ export default function Home() {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out"
                 />
 
                 {/* Details slide up overlay */}
@@ -931,7 +1033,7 @@ export default function Home() {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out"
                 />
 
                 {/* Details slide up overlay */}
@@ -981,9 +1083,9 @@ export default function Home() {
           <div className="bg-[#FAF8F3] rounded-[2rem] sm:rounded-[3rem] overflow-hidden flex flex-col lg:flex-row relative z-10 shadow-lg">
             {/* Left side Image */}
             <div className="w-full lg:w-[45%] h-[350px] sm:h-[400px] lg:h-auto relative">
-              <img 
-                src={working6} 
-                alt="Testimonial" 
+              <img
+                src={working6}
+                alt="Testimonial"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -998,14 +1100,16 @@ export default function Home() {
               </div>
 
               {/* Quote */}
-              <p className="text-slate-500 text-base sm:text-lg leading-relaxed mb-10">
-                Overall, I Cannot Recommend The Gourmet Bistro Highly Enough. If You're Looking For A Restaurant That Serves Delicious, Beautifully Presented Dishes With Impeccable Service, Look No Further. I Will Definitely Be Returning Soon To Try More Of Their Culinary Delights"
-              </p>
+              <div className={`transition-opacity duration-300 ${fadeTestimonial ? 'opacity-100' : 'opacity-0'}`}>
+                <p className="text-slate-500 text-base sm:text-lg leading-relaxed mb-10">
+                  "{testimonials[activeTestimonial].quote}"
+                </p>
 
-              {/* Author */}
-              <div>
-                <h4 className="text-2xl sm:text-3xl font-extrabold text-brand-green font-serif">Jonny Ananta</h4>
-                <span className="text-slate-400 text-sm mt-1 block">Regular Customer's</span>
+                {/* Author */}
+                <div>
+                  <h4 className="text-2xl sm:text-3xl font-extrabold text-brand-green font-serif">{testimonials[activeTestimonial].author}</h4>
+                  <span className="text-slate-400 text-sm mt-1 block">{testimonials[activeTestimonial].role}</span>
+                </div>
               </div>
 
               {/* Divider */}
@@ -1014,10 +1118,10 @@ export default function Home() {
               {/* Stats / Partners */}
               <div>
                 <p className="text-slate-500 text-sm sm:text-base font-bold">
-                  Total Raising Money In This Year <span className="text-charcoal ml-1">&gt; $4,50,000</span>
+                  Total Raising Money In This Year <span className="text-charcoal ml-1">&gt; ₹4,50,000</span>
                 </p>
                 {/* Fake logos row using lucide icons as placeholders for now */}
-                <div className="flex items-center gap-6 sm:gap-10 mt-6 opacity-30 grayscale pointer-events-none">
+                <div className="flex items-center gap-6 sm:gap-10 mt-6 opacity-30 pointer-events-none">
                   <Globe size={40} className="stroke-[1.5px]" />
                   <Shirt size={40} className="stroke-[1.5px]" />
                   <HeartPulse size={40} className="stroke-[1.5px]" />
@@ -1033,7 +1137,7 @@ export default function Home() {
       <section className="py-20 lg:py-28 bg-white border-t border-slate-100 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-stretch">
-            
+
             {/* Left side: Header & Accordion */}
             <div className="w-full lg:w-1/2 flex flex-col">
               {/* Header */}
@@ -1053,69 +1157,88 @@ export default function Home() {
               {/* Accordion */}
               <div className="space-y-4">
                 {faqs.map((faq, idx) => {
-                const isActive = activeFaq === idx;
-                return (
-                  <div key={idx} className="flex flex-col overflow-hidden">
-                    <button
-                      onClick={() => setActiveFaq(isActive ? null : idx)}
-                      className={`w-full flex items-center justify-between p-5 sm:p-6 text-left transition-all duration-300 font-extrabold text-base sm:text-lg ${
-                        isActive 
-                          ? 'bg-[#0F4239] text-brand-gold' 
+                  const isActive = activeFaq === idx;
+                  return (
+                    <div key={idx} className="flex flex-col overflow-hidden">
+                      <button
+                        onClick={() => setActiveFaq(isActive ? null : idx)}
+                        className={`w-full flex items-center justify-between p-5 sm:p-6 text-left transition-all duration-300 font-extrabold text-base sm:text-lg ${isActive
+                          ? 'bg-[#0F4239] text-brand-gold'
                           : 'bg-[#F8F5EB] text-charcoal hover:bg-[#f0eee6]'
-                      }`}
-                    >
-                      <span>{faq.question}</span>
-                      <span className={`flex-shrink-0 ml-4 transition-transform duration-300 ${isActive ? 'text-brand-gold' : 'text-charcoal'}`}>
-                        {isActive ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
-                      </span>
-                    </button>
-                    
-                    {/* Answer Area */}
-                    <div 
-                      className={`transition-all duration-500 ease-in-out overflow-hidden ${
-                        isActive ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'
-                      }`}
-                    >
-                      <div className="p-5 sm:p-6 bg-white border-b text-slate-500 text-sm sm:text-base leading-relaxed">
-                        {faq.answer}
+                          }`}
+                      >
+                        <span>{faq.question}</span>
+                        <span className={`flex-shrink-0 ml-4 transition-transform duration-300 ${isActive ? 'text-brand-gold' : 'text-charcoal'}`}>
+                          {isActive ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+                        </span>
+                      </button>
+
+                      {/* Answer Area */}
+                      <div
+                        className={`transition-all duration-500 ease-in-out overflow-hidden ${isActive ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'
+                          }`}
+                      >
+                        <div className="p-5 sm:p-6 bg-white border-b text-slate-500 text-sm sm:text-base leading-relaxed">
+                          {faq.answer}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )
-              })}
+                  )
+                })}
               </div>
             </div>
 
-            {/* Right side: Video/Images */}
+            {/* Right side: Videos */}
             <div className="w-full lg:w-1/2 flex flex-col">
-              {/* Two Images Stacked Layout */}
-              <div className="flex flex-col gap-6 sm:gap-8 w-full flex-1 min-h-[600px] lg:min-h-0">
-                
-                {/* Image 1 */}
-                <div className="relative w-full flex-1 rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-xl group cursor-pointer min-h-[300px]">
-                  <img 
-                    src={img1} 
-                    alt="FAQ Image 1" 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              {/* Two Videos Stacked Layout */}
+              <div className="flex flex-col gap-6 sm:gap-8 w-full flex-1 h-full">
+
+                {/* Video 1 */}
+                <div 
+                  className="relative w-full flex-1 min-h-[250px] sm:min-h-[300px] rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-xl cursor-pointer group"
+                  onClick={toggleVideo1}
+                >
+                  <video
+                    ref={faqVideo1Ref}
+                    src={aboutHeroVideo}
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover absolute inset-0"
                   />
-                  <div className="absolute inset-0 bg-charcoal/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                  {/* Play Button Overlay */}
+                  {!isPlaying1 && (
+                    <div className="absolute inset-0 bg-charcoal/20 flex items-center justify-center transition-colors duration-500">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-brand-gold/40 rounded-full flex items-center justify-center animate-pulse">
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center text-brand-gold shadow-md group-hover:scale-110 transition-transform duration-300">
+                          <Play size={24} className="fill-current ml-1" />
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                {/* Image 2 with Play Button */}
-                <div className="relative w-full flex-1 rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-xl group cursor-pointer min-h-[300px]">
-                  <img 
-                    src={img2} 
-                    alt="FAQ Video 2" 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                {/* Video 2 */}
+                <div 
+                  className="relative w-full flex-1 min-h-[250px] sm:min-h-[300px] rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-xl cursor-pointer group"
+                  onClick={toggleVideo2}
+                >
+                  <video
+                    ref={faqVideo2Ref}
+                    src={heroVideo}
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover absolute inset-0"
                   />
-                  <div className="absolute inset-0 bg-charcoal/10 group-hover:bg-transparent transition-colors duration-500"></div>
-                  
-                  {/* Play Button */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 bg-brand-gold/40 rounded-full flex items-center justify-center animate-pulse">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center text-brand-gold shadow-md hover:scale-110 transition-transform duration-300">
-                      <Play size={24} className="fill-current ml-1" />
+                  {/* Play Button Overlay */}
+                  {!isPlaying2 && (
+                    <div className="absolute inset-0 bg-charcoal/20 flex items-center justify-center transition-colors duration-500">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-brand-gold/40 rounded-full flex items-center justify-center animate-pulse">
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center text-brand-gold shadow-md group-hover:scale-110 transition-transform duration-300">
+                          <Play size={24} className="fill-current ml-1" />
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
               </div>
