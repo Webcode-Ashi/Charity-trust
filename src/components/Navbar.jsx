@@ -41,7 +41,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Nav Links */}
-          <div className="hidden md:flex space-x-8 items-center">
+          <div className="hidden lg:flex space-x-8 items-center">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -57,7 +57,7 @@ export default function Navbar() {
           </div>
 
           {/* Right Section: Search & CTA */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4">
             {/* Search Icon Trigger */}
             <div className="relative">
               <button
@@ -92,7 +92,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-2">
+          <div className="lg:hidden flex items-center space-x-2">
             <button
               onClick={() => setShowSearch(!showSearch)}
               className="p-2 border border-white/20 rounded-full text-white"
@@ -112,7 +112,7 @@ export default function Navbar() {
 
       {/* Mobile Search input */}
       {showSearch && (
-        <div className="md:hidden bg-white px-4 py-3 border-t border-slate-100 flex items-center">
+        <div className="lg:hidden bg-white px-4 py-3 border-t border-slate-100 flex items-center">
           <input
             type="text"
             placeholder="Search our campaigns..."
@@ -127,7 +127,7 @@ export default function Navbar() {
 
       {/* Mobile Nav Drawer */}
       {isOpen && (
-        <div className="md:hidden bg-[#245331] border-t border-white/10 transition-all duration-300">
+        <div className="lg:hidden bg-[#245331] border-t border-white/10 transition-all duration-300">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link) => (
               <Link

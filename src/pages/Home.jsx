@@ -16,8 +16,8 @@ import work2 from '../assets/images/work2.png'
 import work3 from '../assets/images/work3.png'
 import yogaImg from '../assets/images/yoga.png'
 import templeImg from '../assets/images/temple.png'
-import heroGif from '../assets/images/hero.gif'
-import heroVideo from '../assets/video/Hero_section.mp4'
+
+import heroVideo from '../assets/video/Hero.mp4'
 import aboutHeroVideo from '../assets/video/about_hero.mp4'
 import img1 from '../assets/images/img1.png'
 import img2 from '../assets/images/img2.png'
@@ -353,10 +353,13 @@ export default function Home() {
         ref={heroRef}
         className="relative bg-charcoal text-white overflow-hidden py-24 lg:py-36 px-4 min-h-[500px] lg:min-h-[650px] flex items-center"
       >
-        {/* Background Image (GIF) */}
-        <img
-          src={heroGif}
-          alt="Hero Background"
+        {/* Background Video */}
+        <video
+          src={heroVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
 
@@ -455,10 +458,10 @@ export default function Home() {
       {/* About Section Preview */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
             {/* Left Column: Image with details */}
-            <div className="relative group max-w-md mx-auto lg:max-w-none">
+            <div className="relative group max-w-md mx-auto md:max-w-none">
               <div className="absolute inset-0 bg-brand-gold rounded-3xl rotate-3 scale-95 group-hover:rotate-1 group-hover:scale-100 transition-all duration-300"></div>
               <div className="relative overflow-hidden rounded-3xl bg-white shadow-xl aspect-[4/3] border-4 border-white">
                 <img
@@ -467,7 +470,7 @@ export default function Home() {
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 />
               </div>
-              <div className="relative sm:absolute mt-6 sm:mt-0 sm:-bottom-6 sm:-right-6 mx-auto sm:mx-0 bg-brand-green text-white p-5 sm:p-6 rounded-2xl shadow-lg max-w-[260px] sm:max-w-[240px] border border-brand-green-light z-20 text-center sm:text-left">
+              <div className="relative lg:absolute mt-6 lg:mt-0 lg:-bottom-6 lg:-right-6 mx-auto lg:mx-0 bg-brand-green text-white p-5 sm:p-6 rounded-2xl shadow-lg max-w-[260px] sm:max-w-[280px] border border-brand-green-light z-20 text-center lg:text-left">
                 <p className="text-xs uppercase tracking-widest text-brand-gold font-bold">In Loving Memory</p>
                 <p className="font-extrabold text-base sm:text-lg mt-1">Smt. Ramvati Kasana</p>
                 <p className="text-xs sm:text-sm text-slate-200 mt-1">Our guiding light and source of eternal inspiration.</p>
@@ -475,11 +478,11 @@ export default function Home() {
             </div>
 
             {/* Right Column: Text */}
-            <div className="space-y-6 lg:pl-6 mt-12 lg:mt-0">
+            <div className="space-y-6 md:pl-6 mt-12 md:mt-0">
               <span className="text-brand-green font-bold uppercase tracking-widest text-sm bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20 inline-block mb-1">
                 Who We Are
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-charcoal leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-green leading-tight">
                 Empowering Lives Through Selfless Service
               </h2>
               <p className="text-slate-600 leading-relaxed text-base">
@@ -517,14 +520,14 @@ export default function Home() {
       {/* Shri K.P. Singh Kasana Section (Moved from About) */}
       <section className="py-16 bg-slate-50 border-t border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
             {/* Left Text Column (Shortened) */}
-            <div className="space-y-4 order-2 lg:order-1">
+            <div className="space-y-4 order-2 md:order-1">
               <span className="text-brand-green font-bold uppercase tracking-widest text-sm bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20 inline-block mb-1">
                 Our Visionary Leader
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-charcoal leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-green leading-tight">
                 Shri K.P. Singh Kasana
               </h2>
               <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
@@ -536,8 +539,8 @@ export default function Home() {
             </div>
 
             {/* Right Video Column (Enlarged Height) */}
-            <div className="flex justify-center order-1 lg:order-2">
-              <div className="relative group w-full max-w-sm lg:max-w-md">
+            <div className="flex justify-center order-1 md:order-2">
+              <div className="relative group w-full max-w-sm md:max-w-md">
                 <div className="absolute inset-0 bg-brand-green rounded-2xl rotate-3 scale-95 transition-all duration-300 group-hover:rotate-0"></div>
                 <div className="relative overflow-hidden rounded-2xl bg-charcoal shadow-xl border-4 border-white aspect-[4/3] flex items-center justify-center">
                   <img
@@ -561,7 +564,7 @@ export default function Home() {
         <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-brand-green-light/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
             {/* Left Content */}
             <div className="space-y-6">
               <span className="text-brand-gold font-bold uppercase tracking-widest text-sm bg-brand-gold/10 px-4 py-1.5 rounded-full border border-brand-gold/30 inline-block mb-1">
@@ -626,7 +629,7 @@ export default function Home() {
       {/* Working Section */}
       <section className="py-20 lg:py-28 bg-white border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
 
             {/* Left Column: Text & Features */}
             <div className="space-y-8">
@@ -634,7 +637,7 @@ export default function Home() {
                 <span className="text-brand-green my-10 font-bold uppercase tracking-widest text-sm bg-brand-green/10 px-4 py-1.5 rounded-full border border-brand-green/20 inline-block mb-1">
                   Our Working Model
                 </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-charcoal leading-tight">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-green leading-tight">
                   Our goal is to save more lives with your help.
                 </h2>
                 <p className="text-slate-600 leading-relaxed text-base max-w-xl">
@@ -686,7 +689,7 @@ export default function Home() {
             {/* Right Column: Dynamic Image Collage */}
             <div className="w-full lg:mt-0 mt-8">
               {/* Mobile/Tablet 3-Column Layout */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 lg:hidden max-w-2xl mx-auto w-full">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 md:hidden max-w-2xl mx-auto w-full">
                 <div className="rounded-2xl overflow-hidden shadow-md border-2 border-white aspect-[3/4]">
                   <img
                     src={working1}
@@ -711,9 +714,9 @@ export default function Home() {
               </div>
 
               {/* Desktop Large Overlapping Collage (No Gap on Left Side) */}
-              <div className="hidden lg:block relative h-[550px] sm:h-[650px] w-full max-w-[620px] mx-auto">
+              <div className="hidden md:block relative h-[400px] md:h-[450px] lg:h-[650px] w-full max-w-[620px] mx-auto">
                 {/* Top-Left Image */}
-                <div className="absolute top-[20px] left-0 w-[54%] aspect-square rounded-[2.2rem] overflow-hidden shadow-lg border-4 border-white z-0">
+                <div className="absolute top-0 lg:top-[20px] left-0 w-[54%] aspect-square rounded-[2.2rem] overflow-hidden shadow-lg border-4 border-white z-0">
                   <img
                     src={working1}
                     alt="Welfare outreach"
@@ -722,7 +725,7 @@ export default function Home() {
                 </div>
 
                 {/* Middle-Right Image with Overlapping Splash Shape */}
-                <div className="absolute top-[80px] right-0 w-[54%] aspect-[3/4] rounded-[2.8rem] overflow-hidden shadow-xl border-4 border-white z-10">
+                <div className="absolute top-[40px] lg:top-[80px] right-0 w-[54%] aspect-[3/4] rounded-[2.8rem] overflow-hidden shadow-xl border-4 border-white z-10">
                   <img
                     src={working2}
                     alt="Smiling child"
@@ -734,7 +737,7 @@ export default function Home() {
 
                 {/* Bottom-Left Image with Clipped Bottom-Left Corner */}
                 <div
-                  className="absolute bottom-[20px] left-[5%] w-[54%] aspect-square overflow-hidden shadow-lg border-4 border-white rounded-[2.2rem] z-20"
+                  className="absolute bottom-0 lg:bottom-[20px] left-[5%] w-[54%] aspect-square overflow-hidden shadow-lg border-4 border-white rounded-[2.2rem] z-20"
                   style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 50px 100%, 0 calc(100% - 50px))' }}
                 >
                   <img
@@ -1084,15 +1087,15 @@ export default function Home() {
               <span className="w-1.5 h-1.5 rounded-full bg-brand-green"></span>
               TESTIMONIALS
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-green leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-green leading-tight whitespace-nowrap">
               What people say about charity.
             </h2>
           </div>
 
           {/* Testimonial Card Container */}
-          <div className="bg-[#FAF8F3] rounded-[2rem] sm:rounded-[3rem] overflow-hidden flex flex-col lg:flex-row relative z-10 shadow-lg">
+          <div className="bg-[#FAF8F3] rounded-[2rem] sm:rounded-[3rem] overflow-hidden flex flex-col md:flex-row relative z-10 shadow-lg">
             {/* Left side Image */}
-            <div className="w-full lg:w-[45%] h-[350px] sm:h-[400px] lg:h-auto relative">
+            <div className="w-full md:w-[45%] h-[350px] sm:h-[400px] md:h-auto relative">
               <img
                 src={working6}
                 alt="Testimonial"
@@ -1101,7 +1104,7 @@ export default function Home() {
             </div>
 
             {/* Right side Content */}
-            <div className="w-full lg:w-[55%] p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
+            <div className="w-full md:w-[55%] p-8 sm:p-12 md:p-16 flex flex-col justify-center">
               {/* Stars */}
               <div className="flex gap-1.5 text-brand-gold mb-6">
                 {[1, 2, 3, 4, 5].map((star) => (
@@ -1146,17 +1149,17 @@ export default function Home() {
       {/* FAQ Section */}
       <section className="py-20 lg:py-28 bg-white border-t border-slate-100 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-stretch">
+          <div className="flex flex-col md:flex-row gap-12 md:gap-16 items-stretch">
 
             {/* Left side: Header & Accordion */}
-            <div className="w-full lg:w-1/2 flex flex-col">
+            <div className="w-full md:w-1/2 flex flex-col">
               {/* Header */}
               <div className="mb-8 space-y-5">
                 <span className="text-brand-green font-bold uppercase tracking-widest text-xs bg-white px-4 py-1.5 rounded-full border border-brand-green/30 inline-flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-green"></span>
                   OUR FAQ
                 </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F4239] leading-tight font-serif">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-green leading-tight font-serif">
                   Explore our faqs for quick and helpful guidance
                 </h2>
                 <p className="text-slate-500 text-sm sm:text-base leading-relaxed">
@@ -1199,7 +1202,7 @@ export default function Home() {
             </div>
 
             {/* Right side: Videos */}
-            <div className="w-full lg:w-1/2 flex flex-col">
+            <div className="w-full md:w-1/2 flex flex-col">
               {/* Two Videos Stacked Layout */}
               <div className="flex flex-col gap-6 sm:gap-8 w-full flex-1 h-full">
 
