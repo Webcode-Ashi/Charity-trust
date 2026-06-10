@@ -17,7 +17,7 @@ import work3 from '../assets/images/work3.png'
 import yogaImg from '../assets/images/yoga.png'
 import templeImg from '../assets/images/temple.png'
 
-import heroVideo from '../assets/video/Hero.mp4'
+import heroVideo from '../assets/video/Hero_section1.mp4'
 import aboutHeroVideo from '../assets/video/about_hero.mp4'
 import img1 from '../assets/images/img1.png'
 import img2 from '../assets/images/img2.png'
