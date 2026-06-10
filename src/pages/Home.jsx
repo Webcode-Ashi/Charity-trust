@@ -16,8 +16,8 @@ import work2 from '../assets/images/work2.png'
 import work3 from '../assets/images/work3.png'
 import yogaImg from '../assets/images/yoga.png'
 import templeImg from '../assets/images/temple.png'
+import heroGif from '../assets/images/hero.gif'
 import heroVideo from '../assets/video/Hero_section.mp4'
-import heroVideo1 from '../assets/video/Hero_section1.mp4'
 import aboutHeroVideo from '../assets/video/about_hero.mp4'
 import img1 from '../assets/images/img1.png'
 import img2 from '../assets/images/img2.png'
@@ -353,18 +353,12 @@ export default function Home() {
         ref={heroRef}
         className="relative bg-charcoal text-white overflow-hidden py-24 lg:py-36 px-4 min-h-[500px] lg:min-h-[650px] flex items-center"
       >
-        {/* Background Video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          onCanPlay={(e) => { e.target.playbackRate = 0.25 }}
+        {/* Background Image (GIF) */}
+        <img
+          src={heroGif}
+          alt="Hero Background"
           className="absolute inset-0 w-full h-full object-cover z-0"
-        >
-          <source src={heroVideo1} type="video/mp4" />
-        </video>
+        />
 
         {/* Overlay for readability */}
         <div className="absolute inset-0 bg-black/60 z-10 pointer-events-none" />
@@ -378,14 +372,14 @@ export default function Home() {
               ref={titleRef}
               className="text-[32px] sm:text-5xl md:text-6xl lg:text-[70px] font-extrabold tracking-tight mt-6 leading-[1.15] text-left"
             >
-              Serving Humanity, <br />
-              <span className="text-brand-gold mt-1 sm:mt-0 inline-block">Empowering Lives</span>
+              Let's bring a smile <br />
+              <span className="text-brand-gold mt-1 sm:mt-0 inline-block">to someone's face today</span>
             </h1>
             <p
               ref={descRef}
               className="mt-6 sm:mt-8 text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed max-w-2xl text-left"
             >
-              Ramvati Kasana Charitable Trust (RKCT) strives to create positive, sustainable changes through welfare initiatives, health camps, education support, and spiritual wellness.
+              At Ramvati Kasana Charitable Trust, we believe that small acts of kindness—like sharing a warm meal, helping a child study, or organizing a health camp—can truly change lives. Join us in making a real difference.
             </p>
             <div ref={btnGroupRef} className="mt-8 sm:mt-12 flex flex-wrap justify-start gap-4">
               <Link
